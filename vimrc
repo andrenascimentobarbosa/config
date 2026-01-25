@@ -5,7 +5,11 @@ filetype plugin indent on
 syntax on
 
 " Show line numbers
+set relativenumber
 set number
+
+autocmd InsertEnter * set norelativenumber
+autocmd InsertLeave * set relativenumber
 
 " Set the number of spaces that counts for
 set tabstop=4        
@@ -36,7 +40,6 @@ set clipboard=unnamedplus
 
 " Disable Vi Compatibility mode (use full Vim features)
 set nocompatible
-
 
 
 
