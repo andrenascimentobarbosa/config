@@ -301,3 +301,4 @@ alias pdf='libreoffice --headless --convert-to pdf'
 
 alias nokia='cd /run/user/1000/gvfs/mtp:host=HMD_Global_QM215-QRD__SN%3ADCF5C48E_BE390B9LU/Internal\ Storage/'
 
+

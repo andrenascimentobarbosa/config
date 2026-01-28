@@ -146,5 +146,5 @@ alias txt='gnome-text-editor'
 
 alias pdf='libreoffice --headless --convert-to pdf'
 
-
+alias tmux='tmux -f /dev/null'
 
