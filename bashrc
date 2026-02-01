@@ -10,7 +10,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Prompt
-PS1='\e[1;36m\u\e[1;37m@\e[1;31m\h\e[1;37m:\e[1;34m\w\e[1;37m\$\e[m '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[36m\]\u\[\033[37m\]@\[\033[31m\]\h\[\033[37m\]:\[\033[35m\]\w\[\033[37m\]\$ \[\033[0m\]'
 
 # Count how many files there is in a dir | usage: $count dir/
 count() {
