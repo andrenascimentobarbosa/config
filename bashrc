@@ -16,7 +16,8 @@ fi
 #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '   
 
 # Custom
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;36m\]\u\[\033[00m\] :: \033[3;34m\w\033[1;37m $\033[m '
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;36m\]\u\[\033[00m\] :: \[\033[3;34m\]\w\[\033[1;37m\] $\[\033[m\] '
+
 
 # Count how many files there is in a dir | usage: $count dir/
 count() {
