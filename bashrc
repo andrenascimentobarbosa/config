@@ -8,7 +8,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# no color (default)
 PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '   
+
+# elliot
+#PS1=' \[\033[00;34m\]\u@\h\$:\[\033[m\] '
 
 count() {
     find "$1" -maxdepth 1 -type f | wc -l
@@ -17,13 +21,16 @@ count() {
 export VISUAL=vim
 export EDITOR=vim
 
-alias ll='ls -alF'
+alias ll='ls -la'
 alias la='ls -A'
 alias l='ls -CF'
 alias mp4='yt-dlp -k -o "%(title)s.%(ext)s" --recode-video mp4 --postprocessor-args "-vcodec libx264 -acodec aac"'
 alias mp3='yt-dlp -x --audio-format mp3'
 alias zs='vi ~/.bashrc'
 alias sz='source ~/.bashrc'
+alias tm='vi ~/.tmux.conf'
 alias txt='gnome-text-editor'
 alias pdf='libreoffice --headless --convert-to pdf'
 alias nokia='cd "/run/user/1000/gvfs/mtp:host=HMD_Global_QM215-QRD__SN%3ADCF5C48E_BE390B9LU/Internal Storage/music"'
+alias iphone='cd "/run/user/1000/gvfs/gphoto2:host=Apple_Inc._iPhone_00008020001560C10E8A002E/202602__"'
+
