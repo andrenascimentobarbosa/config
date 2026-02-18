@@ -1,35 +1,58 @@
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+unbind C-b
 
-#PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '            # default
-#PS1='\[\e[00;31m\]\u@\h\[\e[m\]:\[\e[03;34m\]\w\[\e[m\]\$ '     # red
-PS1='\[\e[03;34m\]\w\[\e[m\]\$ '                               # simple
-#PS1=' \[\033[00;34m\]\u@\h\$:\[\033[m\] '                      # elliot
+set -g prefix C-Space
+set -g base-index 1
+set -g renumber-windows on
+set -g status-position bottom
+set -g status-justify left
+set -g status-left ""
+set -g status-right ""
+set -g mode-keys vi
+set -g window-status-current-style "default"
+set -g status-style "default"
+unbind C-b
 
-count() {
-    find "$1" -maxdepth 1 -type f | wc -l
-}
+set -g prefix C-Space
+set -g base-index 1
+set -g renumber-windows on
+set -g status-position bottom
+set -g status-justify left
+set -g status-left ""
+set -g status-right ""
+set -g mode-keys vi
+set -g window-status-current-style "bold"
+set -g status-style "green"
 
-export VISUAL=vim
-export EDITOR=vim
+bind -n C-h resize-pane -L 2 
+bind -n C-l resize-pane -R 2 
+bind -n C-j resize-pane -D 2 
+bind -n C-k resize-pane -U 2    
 
-alias ll='ls -la'
-alias la='ls -A'
-alias l='ls -CF'
-alias mp4='yt-dlp -k -o "%(title)s.%(ext)s" --recode-video mp4 --postprocessor-args "-vcodec libx264 -acodec aac"'
-alias mp3='yt-dlp -x --audio-format mp3'
-alias zs='vi ~/.bashrc'
-alias sz='source ~/.bashrc'
-alias tm='vi ~/.tmux.conf'
-alias txt='gnome-text-editor'
-alias pdf='libreoffice --headless --convert-to pdf'
-alias nokia='cd "/run/user/1000/gvfs/mtp:host=HMD_Global_QM215-QRD__SN%3ADCF5C48E_BE390B9LU/Internal Storage/music"'
-alias iphone='cd "/run/user/1000/gvfs/gphoto2:host=Apple_Inc._iPhone_00008020001560C10E8A002E/202602__"'
+bind h select-pane -L
+bind l select-pane -R
+bind j select-pane -D
+bind k select-pane -U
 
+bind-key v split-window -h
+bind-key b split-window -v
+
+bind Space send-prefix
+
+bind r source-file "~/.tmux.conf"
+
+bind -n C-h resize-pane -L 2 
+bind -n C-l resize-pane -R 2 
+bind -n C-j resize-pane -D 2 
+bind -n C-k resize-pane -U 2    
+
+bind h select-pane -L
+bind l select-pane -R
+bind j select-pane -D
+bind k select-pane -U
+
+bind-key v split-window -h
+bind-key b split-window -v
+
+bind Space send-prefix
+
+bind r source-file "~/.tmux.conf"
