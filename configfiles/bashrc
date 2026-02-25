@@ -154,5 +154,6 @@ alias iphone='cd "/run/user/1000/gvfs/gphoto2:host=Apple_Inc._iPhone_00008020001
 alias zs='vi ~/.bashrc'
 alias sz='source ~/.bashrc'
 alias tm='vi ~/.tmux.conf'
-
+alias dockoff='gnome-extensions disable ubuntu-dock@ubuntu.com'
+alias dockon='gnome-extensions enable ubuntu-dock@ubuntu.com'
 alias work='cd /home/andre/Projects/c2server && source .venv/bin/activate'
