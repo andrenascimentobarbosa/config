@@ -170,6 +170,18 @@ txt() {
     libreoffice --headless --convert-to txt "$1"
 }
 
+mp3t() {
+    yt-dlp -x --audio-format mp3 \
+    --download-sections "*${1}-${2}" \
+    "$3"
+}
+
+mp4t() {
+    yt-dlp -k -o "%(title)s.%(ext)s" --recode-video mp4 --postprocessor-args "-vcodec libx264 -acodec aac" \
+    --download-sections "*${1}-${2}" \
+    "$3"
+}
+
 
 ########
 # Editor
