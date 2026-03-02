@@ -3,11 +3,14 @@
 # for examples
 
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -20,30 +23,34 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+#shopt -s globstar
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-force_color_prompt=yes
+force_color_prompt=no
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+	color_prompt=no
     else
 	color_prompt=
     fi
@@ -77,6 +84,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -98,15 +108,48 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+  fi
 fi
 
-########
-# Prompt
-#PS1='\u@\h:\w\$ '
-#PS1='\[\e[00;36m\]\u\[\e[00;37m\]@\[\e[00;31m\]\h\[\e[00;37m\]:\[\e[00;34m\]\w\[\e[00;37m\]$ \[\e[m\]'
-PS1='\[\e[01;36m\]\u\[\e[01;37m\]@\[\e[01;31m\]\h\[\e[01;37m\]:\[\e[01;34m\]\w\[\e[01;37m\]$ \[\e[m\]'
+
+#########
+#CUSTOM
+#########
+
+
+#########
+# Prompts
+
+set_prompt() {
+    case "$1" in
+        default-colored)
+            PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+            ;;
+        default-nocolor)
+            PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+            ;;
+        simple)
+            PS1='\[\e[01;34m\]\w\[\e[01;37m\]\$\[\e[m\] '
+            ;;
+        colored-bold)
+            PS1='\[\e[1;36m\]\u\[\e[1;37m\]@\[\e[1;31m\]\h\[\e[1;37m\]:\[\e[1;35m\]\w\[\e[1;37m\]\$\[\e[0m\] '
+            ;;
+        colored)
+            PS1='\[\e[0;36m\]\u\[\e[0;37m\]@\[\e[0;31m\]\h\[\e[0;37m\]:\[\e[0;35m\]\w\[\e[0;37m\]\$\[\e[0m\] '
+            ;;
+        *)
+            echo "Available: default-colored, default-nocolor, simple, colored-bold, colored"
+            ;;
+    esac
+}
+
+set_prompt simple
+
 
 ###########
 # Functions
@@ -115,7 +158,7 @@ count() {
     find "$1" -maxdepth 1 -type f | wc -l
 }
 
-convert_mp3() { 
+convert_mp3() {
     ffmpeg -i "$1" -vn -acodec libmp3lame -q:a 2 "${1%.*}.mp3"
 }
 
@@ -144,9 +187,4 @@ alias nokia='cd "/run/user/1000/gvfs/mtp:host=HMD_Global_QM215-QRD__SN%3ADCF5C48
 alias iphone='cd "/run/user/1000/gvfs/gphoto2:host=Apple_Inc._iPhone_00008020001560C10E8A002E/202602__"'
 alias zs='vi ~/.bashrc'
 alias sz='source ~/.bashrc'
-alias im='vi ~/.config/i3/config'
-alias zm='i3-msg reload'
 alias tm='vi ~/.tmux.conf'
-
-
-
