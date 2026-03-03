@@ -136,6 +136,9 @@ set_prompt() {
         simple)
             PS1='\[\e[01;34m\]\w\[\e[01;37m\]\$\[\e[m\] '
             ;;
+        simple2)
+            PS1='\n\[\e[01;34m\]\w\n\[\e[01;37m\]\$\[\e[m\] '
+            ;;
         colored-bold)
             PS1='\[\e[1;36m\]\u\[\e[1;37m\]@\[\e[1;31m\]\h\[\e[1;37m\]:\[\e[1;35m\]\w\[\e[1;37m\]\$\[\e[0m\] '
             ;;
@@ -148,7 +151,12 @@ set_prompt() {
     esac
 }
 
-set_prompt simple
+set_prompt simple2
+
+
+###########
+# Functions
+
 
 
 ###########
@@ -170,16 +178,13 @@ txt() {
     libreoffice --headless --convert-to txt "$1"
 }
 
+
 mp3t() {
-    yt-dlp -x --audio-format mp3 \
-    --download-sections "*${1}-${2}" \
-    "$3"
+    yt-dlp -o "${4}.%(ext)s"-x --audio-format mp3 --download-sections "*${1}-${2}" "${3}"
 }
 
 mp4t() {
-    yt-dlp -k -o "%(title)s.%(ext)s" --recode-video mp4 --postprocessor-args "-vcodec libx264 -acodec aac" \
-    --download-sections "*${1}-${2}" \
-    "$3"
+    yt-dlp -o "${4}.%(ext)s" --recode-video mp4 --postprocessor-args "-vcodec libx264 -acodec aac" --download-sections "*${1}-${2}" "${3}"
 }
 
 
@@ -193,10 +198,14 @@ export EDITOR=vim
 #########
 # Aliases
 
-alias mp4='yt-dlp -k -o "%(title)s.%(ext)s" --recode-video mp4 --postprocessor-args "-vcodec libx264 -acodec aac"'
+alias mp4='yt-dlp -o "%(title)s.%(ext)s" --recode-video mp4 --postprocessor-args "-vcodec libx264 -acodec aac"'
 alias mp3='yt-dlp -x --audio-format mp3'
 alias nokia='cd "/run/user/1000/gvfs/mtp:host=HMD_Global_QM215-QRD__SN%3ADCF5C48E_BE390B9LU/Internal Storage/music"'
 alias iphone='cd "/run/user/1000/gvfs/gphoto2:host=Apple_Inc._iPhone_00008020001560C10E8A002E/202602__"'
 alias zs='vi ~/.bashrc'
 alias sz='source ~/.bashrc'
 alias tm='vi ~/.tmux.conf'
+alias im='vi ~/.config/i3/config'
+alias zm='i3-msg reload'
+
+set -o vi
