@@ -151,7 +151,7 @@ set_prompt() {
     esac
 }
 
-set_prompt simple2
+set_prompt colored
 
 
 ###########
