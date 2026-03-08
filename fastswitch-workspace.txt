@@ -1,5 +1,0 @@
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control><Alt>j']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control><Alt>l']"
-
-paste these commands in the terminal to switch workspaces with 'ctrl + alt + j' for left and 'ctrl + alt + l' for right, you can change it as you want.
-
