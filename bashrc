@@ -208,4 +208,3 @@ alias tm='vi ~/.tmux.conf'
 alias im='vi ~/.config/i3/config'
 alias zm='i3-msg reload'
 
-set -o vi
