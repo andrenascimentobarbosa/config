@@ -157,11 +157,11 @@ bar {
 ##################################################
 
 # toogle keyboard layout
-bindsym Mod1+n exec /home/andre/scripts/keyboard_layout_toggle.sh 
+bindsym Mod4+n exec /home/andre/scripts/keyboard_layout_toggle.sh 
 
 # razer
-bindsym Mod1+o exec polychromatic-cli -o static -c "#000000"
-bindsym Mod1+k exec polychromatic-cli -o static -c "#0000FF"
+bindsym Mod4+o exec polychromatic-cli -o static -c "#000000"
+bindsym Mod4+p exec polychromatic-cli -o static -c "#0000FF"
 
 # monitor
 bindsym Ctrl+Mod1+o exec xrandr --output DP-1 --off
@@ -177,6 +177,8 @@ bindsym Mod1+bracketright exec amixer set Master 5%+
 bindsym Ctrl+Mod1+b exec firefox
 bindsym Ctrl+Mod1+c exec google-chrome
 bindsym Ctrl+Mod1+n exec discord
+
+exec_always --no-startup-id picom
 
 
 
