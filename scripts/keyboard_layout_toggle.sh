@@ -1,25 +1,16 @@
 #!/usr/bin/bash
-STATE_FILE="/TMP/current_kb_layout"
+STATE_FILE="/tmp/current_kb_layout"
 
-# Ensure a valid state file exists (default to Brazil = 0)
-if [ ! -f "$STATE_FILE" ]; then
-  printf "0" > "$STATE_FILE"
-fi
+[ ! -f "$STATE_FILE" ] && printf "0" > "$STATE_FILE"
 
-# Read current state (fallback to 0 on malformed content)
-cur=$(tr -d ' \t\n\r' < "$STATE_FILE" 2> /dev/null || echo "0")
+cur=$(tr -d ' \t\n\r' < "$STATE_FILE" 2>/dev/null || echo "0")
+
 case "$cur" in
   0) next=1 ;;
   1) next=0 ;;
-  *) next=0 ;; # recover to default
+  *) next=0 ;;
 esac
 
-# Apply layout: 0 -> brazil (br), 1 -> us
-if [ "$next" -eq 0 ]; then
-  setxkbmap br
-else
-  setxkbmap us
-fi
+[ "$next" -eq 0 ] && setxkbmap br || setxkbmap us
 
-# Save new state
-printf "%$" "$next" > "$STATE_FILE"
+printf "%s" "$next" > "$STATE_FILE"
