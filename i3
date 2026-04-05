@@ -15,7 +15,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 12
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -164,8 +164,8 @@ bindsym Mod4+o exec polychromatic-cli -o static -c "#000000"
 bindsym Mod4+p exec polychromatic-cli -o static -c "#0000FF"
 
 # monitor
-bindsym Ctrl+Mod1+o exec xrandr --output DP-1 --off
-bindsym Ctrl+Mod1+m exec xrandr --output DP-1 --auto && xrandr --output DP-1 --left-of HDMI-2
+bindsym Ctrl+Mod1+o exec xrandr --output DP-1 --off && feh --bg-scale ~/Pictures/wallpapers/kali-1.0.png
+bindsym Ctrl+Mod1+m exec xrandr --output DP-1 --auto && xrandr --output DP-1 --left-of HDMI-2 && feh --bg-scale ~/Pictures/wallpapers/kali-1.0.png
 
 # audio
 bindsym Ctrl+backslash exec ~/scripts/switchaudio.sh
@@ -178,7 +178,12 @@ bindsym Ctrl+Mod1+b exec firefox
 bindsym Ctrl+Mod1+c exec google-chrome
 bindsym Ctrl+Mod1+n exec discord
 
+bindsym Ctrl+Mod1+0 exec poweroff
+
 exec_always --no-startup-id picom
+
+exec --no-startup-id eval "$(ssh-agent -s)"
+exec --no-startup-id ssh-add ~/.ssh/github-sshkey
 
 
 
