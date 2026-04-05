@@ -182,8 +182,4 @@ bindsym Ctrl+Mod1+0 exec poweroff
 
 exec_always --no-startup-id picom
 
-exec --no-startup-id eval "$(ssh-agent -s)"
-exec --no-startup-id ssh-add ~/.ssh/github-sshkey
-
-
 
