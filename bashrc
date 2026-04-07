@@ -151,14 +151,19 @@ set_prompt() {
         p101)
             PS1='\[\e[0;31m\]\u@\h:\[\e[0;36m\]\w\[\e[m\]% '
             ;;
-
-        *)
-            echo "Available: default-colored, default-nocolor, simple, colored-bold, colored"
+        p00)
+            PS1='\w\$ '
             ;;
+        *)
     esac
 }
 
-set_prompt colored
+set_prompt default
+
+
+###########
+# Functions
+
 
 
 ###########
@@ -209,5 +214,15 @@ alias sz='source ~/.bashrc'
 alias tm='vi ~/.tmux.conf'
 alias im='vi ~/.config/i3/config'
 alias zm='i3-msg reload'
+
+alias lk='cat /home/andre/Documents/info/linkedin.txt'
+alias ph='cat /home/andre/Documents/info/phonenumber.txt'
+
+alias z='zathura'
+alias f='feh'
+
+alias burp='burpsuite'
+
+alias gp='gnome-terminal --preferences'
 
 set -o vi
