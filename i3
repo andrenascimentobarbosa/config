@@ -166,8 +166,8 @@ bindsym Mod4+p exec polychromatic-cli -o static -c "#0000FF"
 # monitor
 exec xrandr --output DP-1 --auto && xrandr --output DP-1 --left-of HDMI-2 && feh --bg-scale ~/Pictures/wallpapers/kali-1.0.png
 
-bindsym Ctrl+Mod1+o exec xrandr --output DP-1 --off && feh --bg-scale ~/Pictures/wallpapers/kali-1.0.png
-bindsym Ctrl+Mod1+m exec xrandr --output DP-1 --auto && xrandr --output DP-1 --left-of HDMI-2 && feh --bg-scale ~/Pictures/wallpapers/kali-1.0.png
+bindsym Ctrl+Mod1+o exec xrandr --output DP-1 --off 
+bindsym Ctrl+Mod1+m exec xrandr --output DP-1 --auto 
 
 # audio
 bindsym Ctrl+backslash exec ~/scripts/switchaudio.sh
@@ -192,8 +192,8 @@ bindsym Shit+Print exec scrot -s /home/andre/Pictures/Screenshots/%Y-%m-%d_%H-%M
 exec_always --no-startup-id picom
 exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpapers/kali-1.0.png
 
-exec --no-startup-id eval "$(ssh-agent -s)"
-exec --no-startup-id ssh-add ~/.ssh/github-sshkey
+exec_always --no-startup-id eval "$(ssh-agent -s)"
+exec_always --no-startup-id ssh-add ~/.ssh/github-sshkey
 
 
 
