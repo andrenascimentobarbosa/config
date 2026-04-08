@@ -164,7 +164,7 @@ bindsym Mod4+o exec polychromatic-cli -o static -c "#000000"
 bindsym Mod4+p exec polychromatic-cli -o static -c "#0000FF"
 
 # monitor
-exec xrandr --output DP-1 --auto && xrandr --output DP-1 --left-of HDMI-2 && feh --bg-scale ~/Pictures/wallpapers/kali-1.0.png
+exec xrandr --output DP-1 --auto && xrandr --output DP-1 --left-of HDMI-2 
 
 bindsym Ctrl+Mod1+o exec xrandr --output DP-1 --off 
 bindsym Ctrl+Mod1+m exec xrandr --output DP-1 --auto 
@@ -180,7 +180,6 @@ bindsym Ctrl+Mod1+b exec firefox
 bindsym Ctrl+Mod1+c exec google-chrome
 bindsym Ctrl+Mod1+n exec discord
 bindsym Ctrl+Mod1+v exec virt-manager
-
 
 # suspend + lock screen
 bindsym Ctrl+Mod1+0 exec i3lock && systemctl suspend
