@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-force_color_prompt=no
+#force_color_prompt=no
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;37m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -121,51 +121,6 @@ fi
 #CUSTOM
 #########
 
-
-#########
-# Prompts
-
-set_prompt() {
-    case "$1" in
-        default-colored)
-            PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-            ;;
-        default-nocolor)
-            PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-            ;;
-        simple)
-            PS1='\[\e[01;34m\]\w\[\e[01;37m\]\$\[\e[m\] '
-            ;;
-        simple2)
-            PS1='\n\[\e[01;34m\]\w\n\[\e[01;37m\]\$\[\e[m\] '
-            ;;
-        colored-bold)
-            PS1='\[\e[1;36m\]\u\[\e[1;37m\]@\[\e[1;31m\]\h\[\e[1;37m\]:\[\e[1;35m\]\w\[\e[1;37m\]\$\[\e[0m\] '
-            ;;
-        colored)
-            PS1='\[\e[0;36m\]\u\[\e[0;37m\]@\[\e[0;31m\]\h\[\e[0;37m\]:\[\e[0;35m\]\w\[\e[0;37m\]\$\[\e[0m\] '
-            ;;
-        geohot)
-            PS1='\u@\h:\[\e[0;36m\]\w\[\e[m\]% '
-            ;;
-        p101)
-            PS1='\[\e[0;31m\]\u@\h:\[\e[0;36m\]\w\[\e[m\]% '
-            ;;
-        p00)
-            PS1='\w\$ '
-            ;;
-        *)
-    esac
-}
-
-set_prompt default
-
-
-###########
-# Functions
-
-
-
 ###########
 # Functions
 
@@ -224,5 +179,8 @@ alias f='feh'
 alias burp='burpsuite'
 
 alias gp='gnome-terminal --preferences'
+alias gh-ssh='/home/andre/scripts/load_ssh_keys.sh'
+
+alias music='mpv ~/Music/all --shuffle=yes'
 
 set -o vi
