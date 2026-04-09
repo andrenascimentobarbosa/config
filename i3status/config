@@ -1,0 +1,19 @@
+general {
+    interval = 1
+}
+
+order += "memory"
+order += "cpu_usage"
+order += "tztime local"
+
+cpu_usage {
+    format = "CPU: %usage"
+}
+
+memory {
+    format = "RAM: %used / %total"
+}
+
+tztime local {
+    format = "[Time: %H:%M:%S | Date: %d/%m/%Y] "
+}

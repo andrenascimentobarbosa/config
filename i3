@@ -15,7 +15,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 12
+#font pango:DejaVu Sans Mono 12
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -148,9 +148,6 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
 
 ##################################################
 # my shortcuts
@@ -189,10 +186,26 @@ bindsym Print exec scrot /home/andre/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png
 bindsym Shit+Print exec scrot -s /home/andre/Pictures/Screenshots/%Y-%m-%d_%H-%M-%S.png
 
 exec_always --no-startup-id picom
-exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpapers/kali-1.0.png
+exec_always --no-startup-id feh --bg-scale ~/Pictures/wallpapers/tux.png
 
 exec_always --no-startup-id eval "$(ssh-agent -s)"
 exec_always --no-startup-id ssh-add ~/.ssh/github-sshkey
 
+#######################################################
+################### - Style - #########################
+#######################################################
 
+font pango:DejaVu Sans Mono 12
+
+bar {
+    font pango:Inconsolata 15
+    status_command i3status
+    separator_symbol "  ::   "
+    workspace_min_width 50
+    colors {
+        urgent_workspace #ff0000 #222222 #ff0000
+        separator #00ffff    
+    }
+
+}
 
