@@ -1,0 +1,34 @@
+order += "battery all"
+order += "memory"
+order += "cpu_usage"
+order += "tztime local"
+
+general {
+    colors = true
+    interval = 1
+}
+
+cpu_usage {
+    format = "CPU: %usage"
+}
+
+memory {
+    format = "RAM: %used / %total"
+}
+
+tztime local {
+    format = "[Time: %H:%M:%S |%a| Date: %d/%m/%Y] "
+    format = "[%H:%M:%S] |%a| %d/%m/%Y "
+}
+
+general {
+        colors = true
+        interval = 1
+}
+
+
+battery all {
+        format = "%status %percentage [%remaining]"
+}
+
+
