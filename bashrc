@@ -57,7 +57,8 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;37m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
+    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[36m\]\u\[\033[00m\]\[\033[37m\]@\[\033[00m\]\[\033[31m\]\h\[\033[00m\]\[\033[37m\]:\[\033[00m\]\[\033[35m\]\w\[\033[00m\]\[\033[37m\]\$\[\033[00m\] ' 
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -168,6 +169,7 @@ alias zs='vi ~/.bashrc'
 alias sz='source ~/.bashrc'
 alias tm='vi ~/.tmux.conf'
 alias im='vi ~/.config/i3/config'
+alias imm='vi ~/.config/i3status/config'
 alias zm='i3-msg reload'
 
 alias lk='cat /home/andre/Documents/info/linkedin.txt'
