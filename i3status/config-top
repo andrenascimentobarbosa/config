@@ -1,0 +1,6 @@
+order += "tztime local"
+
+tztime local {
+    format = "            %A - %d-%B-%Y - %H:%M                                                                      "
+}
+
