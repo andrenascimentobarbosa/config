@@ -1,22 +1,26 @@
-*** Set up ***
-sudo apt update
-sudo apt install i3 picom tmux vim pactl git -y
+<h1>MY Set Up</h1>
 
-git clone https://github.com/andrenascimentobarbosa/config/
+*Dependencies*
+    sudo apt update
+    sudo apt install i3 picom tmux vim pactl git -y
 
-cp ~/config/i3 ~/.config/i3/config
-cp ~/config/picom.conf ~/.config/picom.conf
-cp ~/config/i3status/config-top ~/.config/i3status/config
-~/config/tmux.conf ~/.tmux.conf
-cp ~/config/vimrc ~/.vimrc
-cp ~/config/bashrc ~/.bashrc
-cp -r ~/config/wallpapers ~/Pictures/
+*How to set it up*
+    git clone https://github.com/andrenascimentobarbosa/config/
 
-Change wallpaper:
-vim ~/.config/i3/config
-:%s/<current.png>/<new.png>/g
+    cp ~/config/i3 ~/.config/i3/config
+    cp ~/config/picom.conf ~/.config/picom.conf
+    cp ~/config/i3status/config-top ~/.config/i3status/config
+    ~/config/tmux.conf ~/.tmux.conf
+    cp ~/config/vimrc ~/.vimrc
+    cp ~/config/bashrc ~/.bashrc
+    cp -r ~/config/wallpapers ~/Pictures/
 
-Adjust center removing or adding spaces on  ~/.config/i3status/config
+*Details*
+    Change wallpaper:
+    vim ~/.config/i3/config
+    :%s/<current.png>/<new.png>/g
+
+    Adjust center removing or adding spaces on  ~/.config/i3status/config
 
 
 
