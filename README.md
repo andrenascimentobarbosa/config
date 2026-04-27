@@ -2,8 +2,8 @@
 
 *Dependencies:*
 
-sudo apt update
-sudo apt install i3 picom tmux vim pactl git -y
+    sudo apt update
+    sudo apt install i3 picom tmux vim pactl git -y
 
 _______________________________________________________
 
@@ -25,8 +25,9 @@ _______________________________________________________
 
 **i3WM:**
 Change wallpaper:
-vim ~/.config/i3/config
-:%s/current-wallpaper.png/new-wallpaper.png/g
+
+    vim ~/.config/i3/config
+    :%s/current-wallpaper.png/new-wallpaper.png/g
 
 Adjust center by removing or adding spaces on  ~/.config/i3status/config
 
