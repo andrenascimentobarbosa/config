@@ -43,23 +43,24 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=no
+force_color_prompt=no
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 	# a case would tend to support setf rather than setaf.)
-	color_prompt=no
+	color_prompt=yes
     else
 	color_prompt=
     fi
 fi
 
 if [ "$color_prompt" = yes ]; then
+    # default
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    #PS1='${debian_chroot:+($debian_chroot)}\[\033[36m\]\u\[\033[00m\]\[\033[37m\]@\[\033[00m\]\[\033[31m\]\h\[\033[00m\]\[\033[37m\]:\[\033[00m\]\[\033[35m\]\w\[\033[00m\]\[\033[37m\]\$\[\033[00m\] '
-	PS1='\[\e[01;34m\]\w\[\e[m\]\$ '                                            
+    # custom
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[36m\]\u\[\033[00m\]\[\033[37m\]@\[\033[00m\]\[\033[31m\]\h\[\033[00m\]\[\033[37m\]:\[\033[00m\]\[\033[35m\]\w\[\033[00m\]\[\033[37m\]\$\[\033[00m\] ' 
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -148,42 +149,38 @@ mp3t() {
 }
 
 mp4t() {
-    yt-dlp -o "${4}.%(ext)s" --recode-video mp4 --postprocessor-args "-vcodec libx264 -acodec aac" --download-sections "*${1}-${2}" "${3}"
+    yt-dlp -o "${4}.%(ext)s" --recode-vimdeo mp4 --postprocessor-args "-vcodec libx264 -acodec aac" --download-sections "*${1}-${2}" "${3}"
 }
 
 
 ########
 # Editor
 
-export VISUAL=vim
-export EDITOR=vim
+export VISUAL=vimm
+export EDITOR=vimm
 
 
 #########
 # Aliases
 
-alias mp4='yt-dlp -o "%(title)s.%(ext)s" --recode-video mp4 --postprocessor-args "-vcodec libx264 -acodec aac"'
+alias mp4='yt-dlp -o "%(title)s.%(ext)s" --recode-vimdeo mp4 --postprocessor-args "-vcodec libx264 -acodec aac"'
 alias mp3='yt-dlp -x --audio-format mp3'
 alias nokia='cd "/run/user/1000/gvfs/mtp:host=HMD_Global_QM215-QRD__SN%3ADCF5C48E_BE390B9LU/Internal Storage/music"'
 alias iphone='cd "/run/user/1000/gvfs/gphoto2:host=Apple_Inc._iPhone_00008020001560C10E8A002E/202602__"'
-alias zs='vi ~/.bashrc'
+alias zs='vim ~/.bashrc'
 alias sz='source ~/.bashrc'
-alias tm='vi ~/.tmux.conf'
-alias im='vi ~/.config/i3/config'
-alias imm='vi ~/.config/i3status/config'
+alias tm='vim ~/.tmux.conf'
+alias im='vim ~/.config/i3/config'
+alias imm='vim ~/.config/i3status/config'
 alias zm='i3-msg reload'
-
+alias pm='vi ~/.config/picom.conf'
 alias lk='cat /home/andre/Documents/info/linkedin.txt'
 alias ph='cat /home/andre/Documents/info/phonenumber.txt'
-
 alias z='zathura'
 alias f='feh'
-
 alias burp='burpsuite'
-
 alias gp='gnome-terminal --preferences'
 alias gh-ssh='/home/andre/scripts/load_ssh_keys.sh'
-
 alias music='mpv ~/Music/all --shuffle=yes'
-
+alias juice-shop='sudo docker run --rm -p 3000:3000 bkimminich/juice-shop'
 set -o vi
