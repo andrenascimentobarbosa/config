@@ -1,0 +1,12 @@
+order += "tztime local"
+order += "battery all"
+
+battery all {
+        format = "%status %percentage %remaining"
+}
+
+tztime local {
+    format = "            %a %b %d %H:%M                                             "
+   
+}
+
